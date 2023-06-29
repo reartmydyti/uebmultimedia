@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Football Game</title>
+    <style>
+        body {
+            margin: 0;
+        }
+        canvas {
+            display: block;
+        }
+        #tapCount {
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            color: #ffffff;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        .gameOverHeading {
+            font-family: Arial, sans-serif;
+            font-size: 72px;
+            color: #ffffff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            animation: pulse 1s ease-in-out infinite alternate;
+        }
+        @keyframes pulse {
+            from {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            to {
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+        #resetButton {
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            color: #ffffff;
+            background-color: #333333;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            position: absolute;
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="tapCount">Taps: 0</div>
+    <h1 class="gameOverHeading" id="gameOverHeading">Game Over</h1>
+    <button id="resetButton">Reset</button>
+    <script src="https://pixijs.download/v5.3.7/pixi.min.js"></script>
+    <script>
+        // Create the Pixi.js application
+        const app = new PIXI.Application({ resizeTo: window });
+
+        document.body.appendChild(app.view);
+
+        // Create background image
+        const background = PIXI.Sprite.from('https://pixijs.com/assets/bg_grass.jpg');
+
+        background.width = app.screen.width;
+        background.height = app.screen.height;
+        app.stage.addChild(background);
+
+        // Stop application wait for load to finish
+        app.stop();
+
+        fetch('https://pixijs.com/assets/pixi-filters/shader.frag')
+            .then((res) => res.text())
+            .then(onLoaded);
+
+        let filter;
+
+        // Handle the load completed
+        function onLoaded(data)
+        {
+            // Create the new filter, arguments: (vertexShader, framentSource)
+            filter = new PIXI.Filter(null, data, {
+                customUniform: 0.0,
+            });
+
+            // === WARNING ===
+            // specify uniforms in filter constructor
+            // or set them BEFORE first use
+            // filter.uniforms.customUniform = 0.0
+
+            // Add the filter
+            background.filters = [filter];
+
+            // Resume application update
+            app.start();
+        }
+
+        // Animate the filter
+        app.ticker.add((delta) =>
+        {
+            filter.uniforms.customUniform += 0.04 * delta;
+        });
+
+        // Create a football sprite
+        const ball = PIXI.Sprite.from('football.png');
+        ball.anchor.set(0.5);
+        ball.scale.set(0.1);
+        ball.position.set(app.screen.width / 2, app.screen.height / 2);
+        app.stage.addChild(ball);
+
+        // Set the initial velocity of the ball
+        let vy = 0;
+        const gravity = 0.5;
+
+        // Initialize tap count
+        let tapCount = 0;
+        const tapCountText = document.getElementById('tapCount');
+
+        // Game over heading and reset button
+        const gameOverHeading = document.getElementById('gameOverHeading');
+        const resetButton = document.getElementById('resetButton');
+
+        // Add interaction
+        ball.interactive = true;
+        ball.buttonMode = true;
+        ball.on('pointerdown', () => {
+            vy = -10;
+            tapCount++;
+            tapCountText.textContent = `Taps: ${tapCount}`;
+        });
+
+        // Reset the game
+        function resetGame() {
+            ball.position.set(app.screen.width / 2, app.screen.height / 2);
+            vy = 0;
+            tapCount = 0;
+            tapCountText.textContent = `Taps: ${tapCount}`;
+            gameOverHeading.style.display = 'none';
+            resetButton.style.display = 'none';
+        }
+
+        // Game loop
+        app.ticker.add(() => {
+            // Apply gravity to the ball
+            vy += gravity;
+            ball.y += vy;
+
+            // Check for collision with the ground
+            if (ball.y + ball.height / 2 > app.screen.height) {
+                ball.y = app.screen.height - ball.height / 2;
+                vy *= -0.8;
+                if (tapCount > 0) {
+                    gameOverHeading.style.display = 'block';
+                    resetButton.style.display = 'block';
+                }
+            }
+        });
+
+        // Event listener for reset button
+        resetButton.addEventListener('click', resetGame);
+    </script>
+</body>
+</html>
