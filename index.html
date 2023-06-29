@@ -1,12 +1,431 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Football Fan Page</title>
+    <!-- Favicon  -->
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+
+    <!-- Font Awesome Script -->
+    <script src="https://kit.fontawesome.com/39a08a19c0.js" crossorigin="anonymous"></script>
+
+    <!-- Main StyleSheet  -->
+    <link rel="stylesheet" href="style/style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/6.1.3/pixi.min.js"></script>
+
+    <style>
+        #video-carousel .carousel-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+        }
+
+        #video-carousel .video-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        #video-carousel .video-container video {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
 </head>
+
 <body>
+    <!-- Header Start  -->
+    <header>
+        <!-- header top  -->
+        <div class="header-top">
+            <div class="mobile-menu">
+                <a href="#"><i class="fas fa-bars"></i></a>
+            </div>
+            <nav class="main-menu">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Clubs</a></li>
+                    <li><a href="#">World Cup 2023</a></li>
+                    <li><a href="#">Upcoming Matches</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="login-button">
+                <a href="#"><i class="fas fa-sign-in-alt"></i> Login</a>
+            </div>
+        </div>
+        <!-- header banner  -->
+        <div class="header-banner">
+            <div class="banner-left">
+                <h1>Football Fan Page</h1>
+                <a class="watch-link" href="footballgame.html" target="_blank">Play a simple game <i
+                        class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="banner-right">
+                <img src="images/banner.png" alt="">
+            </div>
+        </div>
+
+    </header>
+    <!-- Header End  -->
+
+    <main>
+        <!-- player details section -->
+        <section class="container">
+            <div class="players">
+                <article class="player">
+                    <div class="player-image">
+                        <img src="images/players/player-1.png" alt="Lionel Messi">
+                    </div>
+                    <div class="player-details">
+                        <h2>Lionel Messi</h2>
+                        <p>Lionel Messi is a legend. The Argentine star holds all of the main records in FC Barcelona's
+                            history. </p>
+                    </div>
+                </article>
+                <article class="player">
+                    <div class="player-image">
+                        <img src="images/players/player-2.png" alt="Di Maria">
+                    </div>
+                    <div class="player-details">
+                        <h2>Di Maria</h2>
+                        <p>Lionel Messi is a legend. The Argentine star holds all of the main records in FC Barcelona's
+                            history. </p>
+                    </div>
+                </article>
+                <article class="player">
+                    <div class="player-image">
+                        <img src="images/players/player-3.png" alt="Cristiano Ronaldo">
+                    </div>
+                    <div class="player-details">
+                        <h2>Cristiano Ronaldo</h2>
+                        <p>Lionel Messi is a legend. The Argentine star holds all of the main records in FC Barcelona's
+                            history. </p>
+                    </div>
+                </article>
+                <article class="player">
+                    <div class="player-image">
+                        <img src="images/players/player-4.png" alt="Neymar Jr">
+                    </div>
+                    <div class="player-details">
+                        <h2>Neymar Jr</h2>
+                        <p>Lionel Messi is a legend. The Argentine star holds all of the main records in FC Barcelona's
+                            history. </p>
+                    </div>
+                </article>
+                <article class="player">
+                    <div class="player-image">
+                        <img src="images/players/player-5.png" alt="Mesut Ozil">
+                    </div>
+                    <div class="player-details">
+                        <h2>Mesut Ozil</h2>
+                        <p>Lionel Messi is a legend. The Argentine star holds all of the main records in FC Barcelona's
+                            history. </p>
+                    </div>
+                </article>
+                <article class="player">
+                    <div class="player-image">
+                        <img src="images/players/player-6.png" alt="Mauro Icardi">
+                    </div>
+                    <div class="player-details">
+                        <h2>Mauro Icardi</h2>
+                        <p>Lionel Messi is a legend. The Argentine star holds all of the main records in FC Barcelona's
+                            history. </p>
+                    </div>
+                </article>
+                <article class="player">
+                    <div class="player-image">
+                        <img src="images/players/player-7.png" alt="Paulo Dybala">
+                    </div>
+                    <div class="player-details">
+                        <h2>Paulo Dybala</h2>
+                        <p>Lionel Messi is a legend. The Argentine star holds all of the main records in FC Barcelona's
+                            history. </p>
+                    </div>
+                </article>
+                <article class="player">
+                    <div class="player-image">
+                        <img src="images/players/player-8.png" alt="Kylian Mbappé">
+                    </div>
+                    <div class="player-details">
+                        <h2>Kylian Mbappé</h2>
+                        <p>Lionel Messi is a legend. The Argentine star holds all of the main records in FC Barcelona's
+                            history. </p>
+                    </div>
+                </article>
+                <article class="player">
+                    <div class="player-image">
+                        <img src="images/players/player-9.png" alt="Mohamed Salah">
+                    </div>
+                    <div class="player-details">
+                        <h2>Mohamed Salah</h2>
+                        <p>Lionel Messi is a legend. The Argentine star holds all of the main records in FC Barcelona's
+                            history. </p>
+                    </div>
+                </article>
+                <article class="player">
+                    <div class="player-image">
+                        <img src="images/players/player-10.png" alt="Harry Kane">
+                    </div>
+                    <div class="player-details">
+                        <h2>Harry Kane</h2>
+                        <p>Lionel Messi is a legend. The Argentine star holds all of the main records in FC Barcelona's
+                            history. </p>
+                    </div>
+                </article>
+                <article class="player">
+                    <div class="player-image">
+                        <img src="images/players/player-11.png" alt="Kevin De Bruyne">
+                    </div>
+                    <div class="player-details">
+                        <h2>Kevin De Bruyne</h2>
+                        <p>Lionel Messi is a legend. The Argentine star holds all of the main records in FC Barcelona's
+                            history. </p>
+                    </div>
+                </article>
+                <article class="player">
+                    <div class="player-image">
+                        <img src="images/players/player-12.png" alt="Philippe Coutinho">
+                    </div>
+                    <div class="player-details">
+                        <h2>Philippe Coutinho</h2>
+                        <p>Lionel Messi is a legend. The Argentine star holds all of the main records in FC Barcelona's
+                            history. </p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Highlights Area  -->
+        <section class="container">
+            <div class="highlights-area">
+                <div class="highlights-left">
+                    <h1>All Highlights Copa America 2021</h1>
+                    <p>FC Barcelona and Getafe CF have reached an agreement for the transfer of Carles Aleñá. Barça
+                        reserve the right to 50% of any future sale of the player,</p>
+                    <a class="watch-link" href="#">Watch Now <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="highlights-right">
+                    <img src="images/match.png" alt="Highlights">
+                </div>
+            </div>
+        </section>
+        <!-- Latest Result  -->
+        <section class="container">
+            <h1 class="section-title">Latest Result</h1>
+            <div class="latest-result">
+                <div class="result-left">
+                    <div class="single-result result-left">
+                        <img class="team-banner" src="images/argentina.png" alt="">
+                        <div class="content left-area">
+                            <h3 class="team-name"><span class="left">Argentina</span></h3>
+                            <span class="final-result">WIN</span>
+                        </div>
+                    </div>
+                </div>
+                <span class="vs">vs</span>
+                <div class="result-right">
+                    <div class="single-result result-right">
+                        <img class="team-banner" src="images/brazil.png" alt="">
+                        <div class="content right-area">
+                            <h3 class="team-name"><span class="left">Brazil</span></h3>
+                            <span class="final-result">LOSS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Match Gallery  -->
+        <section class="container">
+            <h1 class="section-title">Match Gallery</h1>
+            <div class="gallery-items">
+                <div class="single-gallery">
+                    <img src="images/1.jpg" alt="">
+                </div>
+                <div class="single-gallery">
+                    <img src="images/2.jpg" alt="">
+                </div>
+                <div class="single-gallery">
+                    <img src="images/3.jpg" alt="">
+                </div>
+                <div class="single-gallery">
+                    <img src="images/4.jpg" alt="">
+                </div>
+                <div class="single-gallery">
+                    <img src="images/5.jpg" alt="">
+                </div>
+                <div class="single-gallery">
+                    <img src="images/6.jpg" alt="">
+                </div>
+            </div>
+        </section>
+
+        <div id="video-carousel"></div>
+        <div id="carousel-controls">
+            <button id="prev-button">Previous</button>
+            <button id="next-button">Next</button>
+        </div>
+
+    </main>
+
+    <!-- Footer Area  -->
+    <footer>
+        <div class="barcelona-logo">
+            <a href="#"><img src="images/Logo.png" alt=""></a>
+        </div>
+        <div class="social-media">
+            <ul>
+                <li><a href="https://instagram.com"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="https://dribble.com"><i class="fab fa-dribbble"></i></a></li>
+                <li><a href="https://twitter.com"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="https://youtube.com"><i class="fab fa-youtube"></i></a></li>
+            </ul>
+        </div>
+        <div class="copyright-text">
+            <p>Copyright &copy; All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="https://pixijs.download/release/pixi.min.js"></script>
     
+    <script>
+        // PixiJS code for the video carousel
+        // PixiJS code for the video carousel
+        const app = new PIXI.Application({ width: 1200, height: 600 });
+        const backgroundTexture = PIXI.Texture.from('images/background.jpg');
+        const backgroundSprite = new PIXI.Sprite(backgroundTexture);
+        backgroundSprite.width = app.screen.width;
+        backgroundSprite.height = app.screen.height;
+        app.stage.addChild(backgroundSprite);
+        document.getElementById("video-carousel").appendChild(app.view);
+
+        // Array of video URLs
+        const videoUrls = [
+            "videos/fcbarcelonavideo1.mp4",
+            "videos/fcbarcelonavideo2.mp4",
+            "videos/fcbarcelonavideo3.mp4"
+        ];
+
+        // Create a container to hold the video elements
+        const videoContainer = new PIXI.Container();
+        videoContainer.width = app.screen.width;
+        videoContainer.height = app.screen.height;
+        app.stage.addChild(videoContainer);
+
+        // Load and display the videos
+        videoUrls.forEach((url, index) => {
+            const video = document.createElement("video");
+            video.src = url;
+            video.width = app.screen.width;
+            video.height = app.screen.height;
+            video.autoplay = false;
+            video.loop = false;
+            video.muted = true; // Mute the videos for autoplay policy
+
+            const videoTexture = PIXI.Texture.from(video);
+            const videoSprite = new PIXI.Sprite(videoTexture);
+            videoSprite.width = app.screen.width;
+            videoSprite.height = app.screen.height;
+            videoSprite.x = index * app.screen.width;
+
+            videoContainer.addChild(videoSprite);
+        });
+
+        // Set up the carousel movement
+        const carouselWidth = videoUrls.length * app.screen.width;
+        let carouselOffset = 0;
+        let dragging = false;
+        let dragStartX = 0;
+
+        app.view.addEventListener("mousedown", handleDragStart);
+        app.view.addEventListener("touchstart", handleDragStart);
+
+        function handleDragStart(event) {
+            dragging = true;
+            dragStartX = event.pageX || event.touches[0].pageX;
+            app.view.style.cursor = "grabbing";
+
+            app.view.addEventListener("mousemove", handleDrag);
+            app.view.addEventListener("touchmove", handleDrag);
+            app.view.addEventListener("mouseup", handleDragEnd);
+            app.view.addEventListener("touchend", handleDragEnd);
+        }
+
+        function handleDrag(event) {
+            if (dragging) {
+                const dragCurrentX = event.pageX || event.touches[0].pageX;
+                const dragDelta = dragCurrentX - dragStartX;
+                carouselOffset += dragDelta;
+                videoContainer.x = carouselOffset;
+                dragStartX = dragCurrentX;
+            }
+        }
+
+        function handleDragEnd() {
+            dragging = false;
+            app.view.style.cursor = "grab";
+
+            app.view.removeEventListener("mousemove", handleDrag);
+            app.view.removeEventListener("touchmove", handleDrag);
+            app.view.removeEventListener("mouseup", handleDragEnd);
+            app.view.removeEventListener("touchend", handleDragEnd);
+        }
+
+        // Add carousel controls
+        const prevButton = document.getElementById("prev-button");
+        const nextButton = document.getElementById("next-button");
+
+        prevButton.addEventListener("click", () => {
+            carouselOffset -= app.screen.width;
+            if (carouselOffset < 0) {
+                carouselOffset = carouselWidth - app.screen.width;
+            }
+            videoContainer.x = carouselOffset;
+        });
+
+        nextButton.addEventListener("click", () => {
+            carouselOffset += app.screen.width;
+            if (carouselOffset >= carouselWidth) {
+                carouselOffset = 0;
+            }
+            videoContainer.x = carouselOffset;
+        });
+
+        // Play videos on click
+        videoContainer.interactive = true;
+        videoContainer.on("pointerdown", (event) => {
+            const videoSprite = event.target;
+            const video = videoSprite.texture.baseTexture.resource.source;
+            video.play();
+        });
+
+        // Stop videos on drag start
+        videoContainer.on("mousedown", handleVideoDragStart);
+        videoContainer.on("touchstart", handleVideoDragStart);
+
+        function handleVideoDragStart() {
+            const videos = videoContainer.children;
+            videos.forEach((videoSprite) => {
+                const video = videoSprite.texture.baseTexture.resource.source;
+                video.pause();
+            });
+        }
+
+
+    </script>
 </body>
+
+
 </html>
