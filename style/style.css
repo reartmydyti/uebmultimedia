@@ -362,6 +362,16 @@ article.player {
   cursor: pointer;
 }
 
+.audio-player {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.audio-player audio {
+    width: 100%;
+    max-width: 800px;
+}
+
 /* Footer Area style  */
 
 footer {
